@@ -38,17 +38,17 @@ jobs:
           token: ${{ secrets.PAT }}  # You'll need to create a Personal Access Token with repo access
           path: target-repo
 
-      - name: Copy built files to target repository
-        run: |
-          mkdir -p target-repo/dist/docs
-          rsync -av --exclude='.git' --exclude='target-repo' --exclude='node_modules' ./ target-repo/dist/docs/
-          # cp -R /* target-repo/dist/docs/
+      # - name: Copy built files to target repository
+      #   run: |
+      #     mkdir -p target-repo/dist/docs
+      #     rsync -av --exclude='.git' --exclude='target-repo' --exclude='node_modules' ./ target-repo/dist/docs/
+      #     # cp -R /* target-repo/dist/docs/
 
-      - name: Commit and push to target repository
-        run: |
-          cd target-repo
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add docs
-          git commit -m "Update docs from Docusaurus build"
-          git push
+      # - name: Commit and push to target repository
+      #   run: |
+      #     cd target-repo
+      #     git config user.name github-actions
+      #     git config user.email github-actions@github.com
+      #     git add docs
+      #     git commit -m "Update docs from Docusaurus build"
+      #     git push

@@ -44,11 +44,11 @@ jobs:
           rsync -av --exclude='.git' --exclude='target-repo' --exclude='node_modules' ./ target-repo/dist/docs/
           # cp -R /* target-repo/dist/docs/
 
-      # - name: Commit and push to target repository
-      #   run: |
-      #     cd target-repo
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-      #     git add docs
-      #     git commit -m "Update docs from Docusaurus build"
-      #     git push
+      - name: Commit and push to target repository
+        run: |
+          cd target-repo
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add docs
+          git commit -m "Update docs from Docusaurus build"
+          git push

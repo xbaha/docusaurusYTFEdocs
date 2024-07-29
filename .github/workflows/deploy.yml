@@ -41,7 +41,7 @@ jobs:
       - name: Copy built files to target repository
         run: |
           mkdir -p target-repo/dist/docs
-      #     cp -R /* target-repo/dist/docs/
+          cp -R /* target-repo/dist/docs/
 
       # - name: Commit and push to target repository
       #   run: |

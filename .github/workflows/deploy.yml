@@ -30,3 +30,24 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build  # Default build directory for Docusaurus
           publish_branch: ytgh-pages
+
+      - name: Checkout target repository
+        uses: actions/checkout@v2
+        with:
+          repository: xbaha/YTSponsoredBy
+          token: ${{ secrets.PAT }}  # You'll need to create a Personal Access Token with repo access
+          path: target-repo
+
+      - name: Copy built files to target repository
+        run: |
+          mkdir -p target-repo/dist/docs
+          cp -R /* target-repo/dist/docs/
+
+      - name: Commit and push to target repository
+        run: |
+          cd target-repo
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add docs
+          git commit -m "Update docs from Docusaurus build"
+          git push

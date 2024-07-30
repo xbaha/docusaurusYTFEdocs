@@ -28,13 +28,12 @@ const config = {
       ({
         docs: {
           path: 'docs',
-          routeBasePath: '/', // Change this to '/'
-          sidebarPath: './sidebars.js',
-          // Remove routeBasePath to keep default '/docs' path
+          routeBasePath: '/', // Serve the docs at the site's root
+          sidebarPath: require.resolve('./sidebars.js'),
         },
         blog: false, // Disable blog plugin
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -57,7 +56,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          // Remove blog link since blog is disabled
+          // Removed blog link since blog is disabled
         ],
       },
       footer: {
@@ -68,7 +67,7 @@ const config = {
             items: [
               {
                 label: 'Tutorial',
-                to: '/docs/intro',
+                to: '/intro', // Updated from '/docs/intro'
               },
             ],
           },

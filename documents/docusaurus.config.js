@@ -8,7 +8,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   url: 'https://your-docusaurus-site.example.com',
-  baseUrl: '/',
+  baseUrl: '/documents',
 
   organizationName: 'facebook',
   projectName: 'docusaurus',

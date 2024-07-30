@@ -27,6 +27,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/', // Change this to '/'
           sidebarPath: './sidebars.js',
           // Remove routeBasePath to keep default '/docs' path
         },

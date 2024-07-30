@@ -24,17 +24,12 @@ jobs:
       - name: Build Docusaurus site
         run: npm run build
        
-      - name: Make move_to_docs.sh executable
-        run: chmod +x ./move_to_docs.sh
-        
-      - name: Move build files to docs directory
-        run: ./move_to_docs.sh
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/docs
+          publish_dir: ./build
+          destination_dir: documents  # Publish to the 'docs' directory within the 'ytgh-pages' branch
           publish_branch: ytgh-pages
 
       # - name: Checkout target repository

@@ -24,6 +24,9 @@ jobs:
       - name: Build Docusaurus site
         run: npm run build
        
+      - name: Make move_to_docs.sh executable
+        run: chmod +x ./move_to_docs.sh
+        
       - name: Move build files to docs directory
         run: ./move_to_docs.sh
 

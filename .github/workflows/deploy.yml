@@ -31,12 +31,12 @@ jobs:
           publish_dir: ./build  # Default build directory for Docusaurus
           publish_branch: ytgh-pages
 
-      - name: Checkout target repository
-        uses: actions/checkout@v2
-        with:
-          repository: xbaha/YTSponsoredBy
-          token: ${{ secrets.PAT }}  # You'll need to create a Personal Access Token with repo access
-          path: target-repo
+      # - name: Checkout target repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: xbaha/YTSponsoredBy
+      #     token: ${{ secrets.PAT }}  # You'll need to create a Personal Access Token with repo access
+      #     path: target-repo
 
       # - name: Copy built files to target repository
       #   run: |

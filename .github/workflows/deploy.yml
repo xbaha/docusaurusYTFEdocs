@@ -41,6 +41,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: dist/docs
+          publish_branch: starter
           # publish_dir: ./build
           # destination_dir: documents  # Publish to the 'docs' directory within the 'ytgh-pages' branch
           # publish_branch: ytgh-pages

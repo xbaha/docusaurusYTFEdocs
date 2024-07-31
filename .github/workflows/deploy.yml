@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - starter  # Adjust this if you want to trigger on a different branch
+    paths:
+      - 'docs/**'      
 
 jobs:
   build:
@@ -28,9 +30,10 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
-          destination_dir: documents  # Publish to the 'docs' directory within the 'ytgh-pages' branch
-          publish_branch: ytgh-pages
+          publish_dir: dist/docs
+          # publish_dir: ./build
+          # destination_dir: documents  # Publish to the 'docs' directory within the 'ytgh-pages' branch
+          # publish_branch: ytgh-pages
 
       # - name: Checkout target repository
       #   uses: actions/checkout@v2

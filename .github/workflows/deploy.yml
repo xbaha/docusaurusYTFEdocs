@@ -24,27 +24,76 @@ jobs:
         run: npm install
 
 
+
+      - name: Create tmp directory
+        run: mkdir -p tmpdocusaurus
+
       - name: Create dist/docs directory
         run: mkdir -p dist/docs
 
       - name: Build Docusaurus site
-        run: npm run build -- --out-dir dist/docs
+        run: npm run build -- --out-dir tmpdocusaurus
 
-      - name: List files in dist/docs (for debugging)
-        run: ls -la dist/docs
+      - name: List files in tmpdocusaurus (for debugging)
+        run: ls -la tmpdocusaurus
+
+      - name: Copy built files to dist/docs
+        run: |
+          rm -rf dist/docs/*
+          cp -r tmpdocusaurus/* dist/docs/
+
+      - name: Clean up tmp directory
+        run: rm -rf tmpdocusaurus          
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add dist/docs
+          git commit -m "Deploy Docusaurus site"
+          git push origin starter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       # - name: Build Docusaurus site
-        # run: npm run build
+      #   run: npm run build -- --out-dir dist/docs
+
+      # - name: List files in dist/docs (for debugging)
+      #   run: ls -la dist/docs
+
+      # # - name: Build Docusaurus site
+      #   # run: npm run build
                
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist/docs
-          publish_branch: starter
-          # publish_dir: ./build
-          # destination_dir: documents  # Publish to the 'docs' directory within the 'ytgh-pages' branch
-          # publish_branch: ytgh-pages
+      # - name: Deploy to GitHub Pages
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: dist/docs
+      #     publish_branch: starter
+      #     # publish_dir: ./build
+      #     # destination_dir: documents  # Publish to the 'docs' directory within the 'ytgh-pages' branch
+      #     # publish_branch: ytgh-pages
+
+
+
+
+
+
+
 
       # - name: Checkout target repository
       #   uses: actions/checkout@v2

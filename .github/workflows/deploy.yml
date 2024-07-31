@@ -23,9 +23,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+
+      - name: Create dist/docs directory
+        run: mkdir -p dist/docs
+
       - name: Build Docusaurus site
-        # run: npm run build
         run: npm run build -- --out-dir dist/docs
+
+      - name: List files in dist/docs (for debugging)
+        run: ls -la dist/docs
+
+      # - name: Build Docusaurus site
+        # run: npm run build
                
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
